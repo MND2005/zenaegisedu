@@ -26,20 +26,20 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div>
-            <div className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            <div className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
               HOW IT WORKS
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Instant Access to Education
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
               No login required. Just click your subject and you'll be directed straight to{' '}
-              <span className="font-semibold text-gray-900">Google Drive</span> to view or download files.
+              <span className="font-semibold text-gray-900 dark:text-white">Google Drive</span> to view or download files.
             </p>
 
             {/* Features Grid */}
@@ -48,14 +48,14 @@ const HowItWorks = () => {
                 const Icon = feature.icon;
                 return (
                   <div key={index} className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center">
                       <Icon className="w-6 h-6 text-emerald-500" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
                         {feature.title}
                       </h4>
-                      <p className="text-gray-600">{feature.description}</p>
+                      <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
                     </div>
                   </div>
                 );
@@ -67,14 +67,14 @@ const HowItWorks = () => {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
                 alt="Student studying"
                 className="w-full h-[500px] object-cover"
               />
             </div>
             {/* Decorative element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-emerald-100 rounded-2xl -z-10"></div>
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-emerald-50 rounded-2xl -z-10"></div>
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-emerald-100 dark:bg-emerald-900/20 rounded-2xl -z-10"></div>
+            <div className="absolute -top-6 -left-6 w-32 h-32 bg-emerald-50 dark:bg-emerald-900/10 rounded-2xl -z-10"></div>
           </div>
         </div>
       </div>

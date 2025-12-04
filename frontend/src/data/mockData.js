@@ -10,19 +10,25 @@ export const gradeCategories = [
     id: '6-9',
     title: 'Middle School (Grades 6–9)',
     subjects: 'Science, History, Geog, Civics',
-    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80'
+    image: 'https://images.unsplash.com/photo-1509062522246-375596ef7f47?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'ol',
     title: 'O/L (Ordinary Level)',
     subjects: 'Past Papers, Model Papers, Notes',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80'
+    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'al',
     title: 'A/L (Advanced Level)',
     subjects: 'Sci, Arts, Comm, Tech Streams',
-    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80'
+    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'university',
+    title: 'University',
+    subjects: 'Undergraduate, Postgraduate, Research',
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80'
   }
 ];
 
@@ -225,6 +231,56 @@ const mockResources = [
     title: 'A/L Business Studies - Past Paper 2023',
     subject: 'Business Studies',
     type: 'Past Paper',
+    driveLink: 'https://drive.google.com'
+  },
+
+  // University
+  {
+    id: 'u1',
+    gradeId: 'university',
+    title: 'Computer Science - Algorithms Notes',
+    subject: 'Computer Science',
+    type: 'Lecture Notes',
+    driveLink: 'https://drive.google.com'
+  },
+  {
+    id: 'u2',
+    gradeId: 'university',
+    title: 'Business Management - Case Studies',
+    subject: 'Business',
+    type: 'Case Study',
+    driveLink: 'https://drive.google.com'
+  },
+  {
+    id: 'u3',
+    gradeId: 'university',
+    title: 'Engineering - Thermodynamics Handbook',
+    subject: 'Engineering',
+    type: 'Reference',
+    driveLink: 'https://drive.google.com'
+  },
+  {
+    id: 'u4',
+    gradeId: 'university',
+    title: 'Medicine - Anatomy Flashcards',
+    subject: 'Medical',
+    type: 'Study Aid',
+    driveLink: 'https://drive.google.com'
+  },
+  {
+    id: 'u5',
+    gradeId: 'university',
+    title: 'Law - Constitutional Law Summary',
+    subject: 'Law',
+    type: 'Summary',
+    driveLink: 'https://drive.google.com'
+  },
+  {
+    id: 'u6',
+    gradeId: 'university',
+    title: 'Psychology - Research Methods Guide',
+    subject: 'Psychology',
+    type: 'Guide',
     driveLink: 'https://drive.google.com'
   }
 ];

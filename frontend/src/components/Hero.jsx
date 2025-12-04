@@ -13,7 +13,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1920&q=80)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -24,8 +24,8 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
-          <span className="text-sm font-medium text-white">FOR SRI LANKAN STUDENTS</span>
-          <span className="text-lg">🇱🇰</span>
+          <span className="text-sm font-medium text-white">FOR SRI LANKAN STUDENTS WITH ❤️</span>
+          
         </div>
 
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
@@ -34,7 +34,7 @@ const Hero = () => {
         </h1>
 
         <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-          Access <span className="font-bold text-white">1100+</span> essential school documents, past papers, and short notes from Grade 1 to A/L. Designed to be fast and accessible, even during floods and power cuts.
+          Access <span className="font-bold text-white">1100+</span> essential school documents, past papers, and short notes from Grade 1 to University. Designed to be fast and accessible, even during floods and power cuts.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4">
