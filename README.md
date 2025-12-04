@@ -49,6 +49,14 @@ To resolve these conflicts:
 - Downgraded `date-fns` to version 2.30.0
 - Always use `--legacy-peer-deps` flag when installing dependencies with npm
 
+## Firebase Setup
+
+This project requires Firebase for authentication and data storage. Make sure to:
+1. Create a Firebase project at https://console.firebase.google.com/
+2. Enable Authentication (Email/Password provider)
+3. Enable Firestore Database
+4. Add your Firebase configuration to the `.env` file
+
 ## Yarn Setup
 
 This project uses Yarn as the package manager. The yarn.lock file ensures consistent dependency versions across environments. 
