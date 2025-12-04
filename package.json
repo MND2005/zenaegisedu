@@ -4,8 +4,8 @@
   "description": "Educational platform",
   "main": "index.js",
   "scripts": {
-    "build": "cd frontend && npm install --legacy-peer-deps && npm run build",
-    "vercel-build": "cd frontend && npm install --legacy-peer-deps && npm run build"
+    "build": "cd frontend && yarn install --legacy-peer-deps && yarn build",
+    "vercel-build": "cd frontend && yarn install --legacy-peer-deps && yarn build"
   },
   "keywords": [],
   "author": "",

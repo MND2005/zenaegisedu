@@ -5,7 +5,7 @@ An educational platform built with React, Firebase, and Tailwind CSS.
 ## Prerequisites
 
 - Node.js (version 16 or higher)
-- npm or yarn
+- Yarn (recommended) or npm
 - Firebase account
 
 ## Setup Instructions
@@ -14,9 +14,9 @@ An educational platform built with React, Firebase, and Tailwind CSS.
 2. Navigate to the `frontend` directory
 3. Install dependencies:
    ```bash
-   npm install --legacy-peer-deps
-   # or
    yarn install
+   # or
+   npm install --legacy-peer-deps
    ```
 
 4. Create a `.env` file in the `frontend` directory with your Firebase configuration:
@@ -32,9 +32,9 @@ An educational platform built with React, Firebase, and Tailwind CSS.
 
 5. Start the development server:
    ```bash
-   npm start
-   # or
    yarn start
+   # or
+   npm start
    ```
 
 ## Dependency Issue Resolution
@@ -47,7 +47,7 @@ This project had compatibility issues with certain dependencies:
 To resolve these conflicts:
 - Downgraded React and React DOM to version 18.2.0
 - Downgraded `date-fns` to version 2.30.0
-- Always use `--legacy-peer-deps` flag when installing dependencies
+- Always use `--legacy-peer-deps` flag when installing dependencies with npm
 
 ## Deployment to Vercel
 
@@ -57,7 +57,7 @@ To resolve these conflicts:
 4. Configure the project:
    - Framework Preset: Create React App
    - Root Directory: Leave as root (configuration is in root vercel.json)
-   - Build Command: `npm run vercel-build`
+   - Build Command: `yarn vercel-build`
    - Output Directory: `frontend/build`
 5. Add your environment variables in the Vercel dashboard
 6. Deploy!
@@ -66,14 +66,14 @@ To resolve these conflicts:
 
 In the project directory, you can run:
 
-### `npm start` or `yarn start`
+### `yarn start` or `npm start`
 
 Runs the app in development mode.
 
-### `npm run build` or `yarn build`
+### `yarn build` or `npm run build`
 
 Builds the app for production to the `build` folder.
 
-### `npm test` or `yarn test`
+### `yarn test` or `npm test`
 
 Launches the test runner in interactive watch mode.

@@ -39,6 +39,6 @@
       "dest": "/index.html"
     }
   ],
-  "installCommand": "cd frontend && npm install --legacy-peer-deps",
+  "installCommand": "cd frontend && yarn install --legacy-peer-deps",
   "outputDirectory": "frontend/build"
 }
