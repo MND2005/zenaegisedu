@@ -57,6 +57,13 @@ This project requires Firebase for authentication and data storage. Make sure to
 3. Enable Firestore Database
 4. Add your Firebase configuration to the `.env` file
 
+## Routing and 404 Handling
+
+This is a Single Page Application (SPA) that uses client-side routing. The vercel.json configuration ensures:
+1. All routes are redirected to index.html for proper client-side routing
+2. Static assets are served correctly
+3. A custom 404 page is provided for non-existent routes
+
 ## Yarn Setup
 
 This project uses Yarn as the package manager. The yarn.lock file ensures consistent dependency versions across environments. 
