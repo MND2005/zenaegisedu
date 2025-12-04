@@ -41,6 +41,8 @@ const GradeCards = () => {
   if (loading) {
     return (
       <section id="grades" className="py-20 bg-gray-50 dark:bg-gray-900">
+        {/* Blurred edge transition from previous section */}
+        <div className="h-16 -mt-16 bg-gradient-to-b from-gray-900/80 to-transparent backdrop-blur-sm"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -58,6 +60,8 @@ const GradeCards = () => {
 
   return (
     <section id="grades" className="py-20 bg-gray-50 dark:bg-gray-900">
+      {/* Blurred edge transition from previous section */}
+      <div className="h-16 -mt-16 bg-gradient-to-b from-gray-900/80 to-transparent backdrop-blur-sm"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">

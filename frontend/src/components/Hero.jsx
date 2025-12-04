@@ -21,6 +21,9 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/70 to-gray-900/80"></div>
       </div>
 
+      {/* Blurred edge transition to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-900/80 backdrop-blur-sm"></div>
+
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         

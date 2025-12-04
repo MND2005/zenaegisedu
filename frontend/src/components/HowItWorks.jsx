@@ -27,6 +27,8 @@ const HowItWorks = () => {
 
   return (
     <section className="py-20 bg-white dark:bg-gray-900">
+      {/* Blurred edge transition from previous section */}
+      <div className="h-16 -mt-16 bg-gradient-to-b from-gray-50 dark:from-gray-900 to-transparent backdrop-blur-sm"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -67,7 +69,7 @@ const HowItWorks = () => {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+                src="https://media.istockphoto.com/id/1277718299/vector/artificial-intelligence-looking-at-smart-city-connected-with-planet-through-global-mobile.jpg?s=612x612&w=0&k=20&c=YLnQa3z3UmapQnQsnlWCcJzvie_GG7OdW_BXmGpo3II="
                 alt="Student studying"
                 className="w-full h-[500px] object-cover"
               />

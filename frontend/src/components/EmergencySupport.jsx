@@ -74,6 +74,9 @@ const EmergencySupport = () => {
 
   return (
     <section className="py-20 bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+      {/* Blurred edge transition from previous section */}
+      <div className="h-16 -mt-16 bg-gradient-to-b from-gray-50 dark:from-gray-900 to-transparent backdrop-blur-sm"></div>
+      
       {/* Rain effect */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(50)].map((_, i) => (
