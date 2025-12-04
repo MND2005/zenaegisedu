@@ -16,7 +16,14 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/grade/:gradeId" element={<GradePage />} />
+            <Route 
+              path="/grade/:gradeId" 
+              element={
+                <ProtectedRoute>
+                  <GradePage />
+                </ProtectedRoute>
+              } 
+            />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
-import { BookOpen, LogIn, LogOut, Settings, Sun, Moon, Menu, X } from 'lucide-react';
+import { BookOpen, LogIn, LogOut, Settings, Sun, Moon, Menu, X, UserPlus } from 'lucide-react';
 
 const Header = () => {
   const { currentUser, isAdmin, logout } = useAuth();
@@ -24,9 +24,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-emerald-500 rounded-md flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-white" />
-            </div>
+            
             <span className="text-xl font-semibold text-white">ZenAegis Edu</span>
           </Link>
           
@@ -83,10 +81,16 @@ const Header = () => {
                 </button>
               </div>
             ) : (
-              <Link to="/login" className="text-gray-300 font-medium hover:text-emerald-400 transition-colors flex items-center gap-1">
-                <LogIn className="w-4 h-4" />
-                Login
-              </Link>
+              <div className="flex items-center gap-2">
+                <Link to="/signup" className="border border-gray-600 text-gray-300 font-medium hover:text-emerald-400 hover:border-emerald-400 transition-colors flex items-center gap-1 px-3 py-1 rounded-md">
+                  <UserPlus className="w-4 h-4" />
+                  Signup
+                </Link>
+                <Link to="/login" className="border border-gray-600 text-gray-300 font-medium hover:text-emerald-400 hover:border-emerald-400 transition-colors flex items-center gap-1 px-3 py-1 rounded-md">
+                  <LogIn className="w-4 h-4" />
+                  Login
+                </Link>
+              </div>
             )}
           </nav>
         </div>
@@ -141,14 +145,24 @@ const Header = () => {
                   </button>
                 </>
               ) : (
-                <Link 
-                  to="/login" 
-                  className="text-gray-300 font-medium hover:text-emerald-400 transition-colors flex items-center gap-1"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <LogIn className="w-4 h-4" />
-                  Login
-                </Link>
+                <div className="flex flex-col gap-2">
+                  <Link 
+                    to="/signup" 
+                    className="border border-gray-600 text-gray-300 font-medium hover:text-emerald-400 hover:border-emerald-400 transition-colors flex items-center gap-1 px-3 py-1 rounded-md"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <UserPlus className="w-4 h-4" />
+                    Signup
+                  </Link>
+                  <Link 
+                    to="/login" 
+                    className="border border-gray-600 text-gray-300 font-medium hover:text-emerald-400 hover:border-emerald-400 transition-colors flex items-center gap-1 px-3 py-1 rounded-md"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <LogIn className="w-4 h-4" />
+                    Login
+                  </Link>
+                </div>
               )}
             </div>
           </div>

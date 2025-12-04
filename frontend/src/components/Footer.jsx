@@ -8,8 +8,8 @@ const Footer = ({ isAdmin = false }) => {
         <div className="text-center max-w-3xl mx-auto">
           {!isAdmin && (
             <>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Powered by ZenAegis
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 flex items-center justify-center gap-3">
+                Powered by <img src="/logo.png" alt="ZenAegis Logo" className="h-16" />
               </h2>
               <p className="text-lg text-gray-300 mb-8">
                 
