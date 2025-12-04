@@ -39,14 +39,15 @@ An educational platform built with React, Firebase, and Tailwind CSS.
 
 ## Dependency Issue Resolution
 
-This project uses `date-fns` version 4.x, but some dependencies like `react-day-picker` require version 2.x or 3.x. To resolve this conflict:
+This project had compatibility issues with certain dependencies:
 
-1. Always use `--legacy-peer-deps` flag when installing dependencies:
-   ```bash
-   npm install --legacy-peer-deps
-   ```
+1. `react-day-picker` requires React version 16, 17, or 18, but the project was using React 19
+2. `react-day-picker` requires `date-fns` version 2.x or 3.x, but the project was using version 4.x
 
-2. For Vercel deployment, the build scripts already include this flag
+To resolve these conflicts:
+- Downgraded React and React DOM to version 18.2.0
+- Downgraded `date-fns` to version 2.30.0
+- Always use `--legacy-peer-deps` flag when installing dependencies
 
 ## Deployment to Vercel
 
