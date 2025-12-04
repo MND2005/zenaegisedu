@@ -44,9 +44,9 @@ An educational platform built with React, Firebase, and Tailwind CSS.
 3. Click "New Project" and import your repository
 4. Configure the project:
    - Framework Preset: Create React App
-   - Root Directory: frontend
+   - Root Directory: Leave as root (configuration is in root vercel.json)
    - Build Command: `npm run vercel-build` (or `yarn vercel-build`)
-   - Output Directory: build
+   - Output Directory: `frontend/build`
 5. Add your environment variables in the Vercel dashboard
 6. Deploy!
 
