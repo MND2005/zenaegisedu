@@ -7,7 +7,8 @@ import {
   BarChart3, 
   Settings,
   LogOut,
-  Layers
+  Layers,
+  MessageCircle
 } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -46,6 +47,17 @@ const AdminSidebar = ({ onLogout }) => {
           description: 'Manage detailed grade levels',
           href: '/admin/sub-grades',
           icon: Layers,
+        },
+      ],
+    },
+    {
+      label: 'User Engagement',
+      items: [
+        {
+          name: 'Feedback',
+          description: 'View and manage user feedback',
+          href: '/admin/feedback',
+          icon: MessageCircle,
         },
       ],
     },

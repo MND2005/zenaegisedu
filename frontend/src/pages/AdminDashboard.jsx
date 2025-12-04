@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useLocation } from 'react-router-dom';
-import { addResource, getResources, deleteResource, getGradeCategories, updateGradeCategory, initializeGradeCategoriesIfNeeded, getSubGrades } from '../services/firestore';
+import { addResource, getResources, deleteResource, getGradeCategories, updateGradeCategory, initializeGradeCategoriesIfNeeded, getSubGrades, getFeedback } from '../services/firestore';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AdminSidebar from '../components/AdminSidebar';
@@ -10,6 +10,7 @@ import AdminSettings from './AdminSettings';
 import AdminResources from './AdminResources';
 import AdminGradeImages from './AdminGradeImages';
 import AdminSubGrades from './AdminSubGrades';
+import AdminFeedback from './AdminFeedback'; // Import the new AdminFeedback component
 import ResourceManagement from '../components/admin/ResourceManagement';
 import GradeImageManagement from '../components/admin/GradeImageManagement';
 
@@ -37,6 +38,7 @@ const AdminDashboard = () => {
     if (path.includes('/grade-images')) return 'grade-images';
     if (path.includes('/statistics')) return 'statistics';
     if (path.includes('/sub-grades')) return 'sub-grades';
+    if (path.includes('/feedback')) return 'feedback'; // Add feedback tab
     if (path.includes('/settings')) return 'settings';
     return 'dashboard';
   };
@@ -266,6 +268,8 @@ const AdminDashboard = () => {
         );
       case 'sub-grades':
         return <AdminSubGrades gradeCategories={gradeCategories} />;
+      case 'feedback':
+        return <AdminFeedback />; // Add the feedback component
       case 'statistics':
         return <AdminStats resources={resources} gradeCategories={gradeCategories} />;
       case 'settings':

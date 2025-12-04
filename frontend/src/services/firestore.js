@@ -5,6 +5,7 @@ import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, orderBy,
 const RESOURCES_COLLECTION = 'resources';
 const GRADE_CATEGORIES_COLLECTION = 'gradeCategories';
 const SUB_GRADES_COLLECTION = 'subGrades';
+const FEEDBACK_COLLECTION = 'feedback'; // New collection for feedback
 
 // Add a new resource
 export const addResource = async (resourceData) => {
@@ -216,6 +217,61 @@ export const deleteSubGrade = async (id) => {
     return { success: true };
   } catch (error) {
     console.error('Error deleting sub grade: ', error);
+    return { success: false, error: error.message };
+  }
+};
+
+// ===== Feedback APIs =====
+
+// Add new feedback
+export const addFeedback = async (feedbackData) => {
+  try {
+    const docRef = await addDoc(collection(db, FEEDBACK_COLLECTION), {
+      ...feedbackData,
+      createdAt: new Date(),
+      status: 'new' // Default status for new feedback
+    });
+    return { success: true, id: docRef.id };
+  } catch (error) {
+    console.error('Error adding feedback: ', error);
+    return { success: false, error: error.message };
+  }
+};
+
+// Get all feedback
+export const getFeedback = async () => {
+  try {
+    const q = query(collection(db, FEEDBACK_COLLECTION), orderBy('createdAt', 'desc'));
+    const querySnapshot = await getDocs(q);
+    const feedback = [];
+    querySnapshot.forEach((doc) => {
+      feedback.push({ id: doc.id, ...doc.data() });
+    });
+    return { success: true, data: feedback };
+  } catch (error) {
+    console.error('Error getting feedback: ', error);
+    return { success: false, error: error.message };
+  }
+};
+
+// Update feedback status
+export const updateFeedbackStatus = async (id, status) => {
+  try {
+    await updateDoc(doc(db, FEEDBACK_COLLECTION, id), { status });
+    return { success: true };
+  } catch (error) {
+    console.error('Error updating feedback status: ', error);
+    return { success: false, error: error.message };
+  }
+};
+
+// Delete feedback
+export const deleteFeedback = async (id) => {
+  try {
+    await deleteDoc(doc(db, FEEDBACK_COLLECTION, id));
+    return { success: true };
+  } catch (error) {
+    console.error('Error deleting feedback: ', error);
     return { success: false, error: error.message };
   }
 };

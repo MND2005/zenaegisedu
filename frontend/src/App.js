@@ -59,6 +59,14 @@ function App() {
               } 
             />
             <Route 
+              path="/admin/feedback" 
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
               path="/admin/statistics" 
               element={
                 <ProtectedRoute requireAdmin>

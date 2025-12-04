@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { BookOpen, LogIn, LogOut, Settings, Sun, Moon, Menu, X, UserPlus } from 'lucide-react';
 
-const Header = () => {
+const Header = ({ onOpenFeedback }) => {
   const { currentUser, isAdmin, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
@@ -53,9 +53,12 @@ const Header = () => {
             <a href="#grades" className="text-gray-300 font-medium hover:text-white transition-colors">
               Grades
             </a>
-            <a href="#feedback" className="text-gray-300 font-medium hover:text-white transition-colors">
+            <button 
+              onClick={onOpenFeedback}
+              className="text-gray-300 font-medium hover:text-white transition-colors"
+            >
               Feedback
-            </a>
+            </button>
             
             <button 
               onClick={toggleTheme}
@@ -113,13 +116,15 @@ const Header = () => {
               >
                 Grades
               </a>
-              <a 
-                href="#feedback" 
-                className="text-gray-300 font-medium hover:text-white transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+              <button 
+                onClick={() => {
+                  onOpenFeedback();
+                  setMobileMenuOpen(false);
+                }}
+                className="text-gray-300 font-medium hover:text-white transition-colors text-left"
               >
                 Feedback
-              </a>
+              </button>
               
               {currentUser ? (
                 <>
