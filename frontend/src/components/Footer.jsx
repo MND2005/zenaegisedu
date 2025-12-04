@@ -12,7 +12,7 @@ const Footer = ({ isAdmin = false }) => {
           {!isAdmin && (
             <>
               <h2 className={`text-3xl md:text-4xl font-bold mb-6 flex items-center justify-center gap-3 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
-                Powered by <img src="https://i.postimg.cc/HxfsFS6n/Logo-(1).png" alt="ZenAegis Logo" className="h-16" />
+                Powered by <img src={theme === 'light' ? "https://i.postimg.cc/Zn2M65r8/Logo-Dark-(1).png" : "https://i.postimg.cc/HxfsFS6n/Logo-(1).png"} alt="ZenAegis Logo" className="h-16" />
               </h2>
               <p className={`text-lg mb-8 ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
                 
