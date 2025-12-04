@@ -24,7 +24,7 @@ const Header = ({ onOpenFeedback }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center gap-2">
-            <span className={`text-xl font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>ZenAegis Edu</span>
+            <span className={`text-xl font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>Classmate</span>
           </Link>
           
           {/* Mobile menu button */}
