@@ -27,7 +27,7 @@ const Login = () => {
       case 'auth/too-many-requests':
         return 'Too many failed attempts. Please try again later.';
       case 'auth/network-request-failed':
-        return 'Network error. Please check your connection and try again.';
+        return 'Please enter valid username and password.';
       default:
         return 'Please enter valid username and password.';
     }

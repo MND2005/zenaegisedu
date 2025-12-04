@@ -28,7 +28,7 @@ const Signup = () => {
       case 'auth/too-many-requests':
         return 'Too many requests. Please try again later.';
       case 'auth/network-request-failed':
-        return 'Network error. Please check your connection and try again.';
+        return 'Please enter valid username and password';
       default:
         return 'Failed to create an account. Please try again.';
     }
