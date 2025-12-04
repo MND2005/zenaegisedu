@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { X, AlertCircle, MessageSquare } from 'lucide-react';
+import { X, AlertCircle, MessageSquare, Star } from 'lucide-react';
 import { addFeedback } from '../services/firestore'; // Import the Firestore service
 
 const FeedbackPopup = ({ isOpen, onClose }) => {
   const [feedbackType, setFeedbackType] = useState(''); // 'error' or 'review'
+  const [rating, setRating] = useState(0); // 1-5 star rating
+  const [hoverRating, setHoverRating] = useState(0); // For hover effect
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,6 +25,13 @@ const FeedbackPopup = ({ isOpen, onClose }) => {
       return;
     }
 
+    // For reviews, rating is required
+    if (feedbackType === 'review' && rating === 0) {
+      setSubmitError('Please provide a rating');
+      setIsSubmitting(false);
+      return;
+    }
+
     if (!message.trim()) {
       setSubmitError('Please enter your feedback');
       setIsSubmitting(false);
@@ -38,11 +47,17 @@ const FeedbackPopup = ({ isOpen, onClose }) => {
         createdAt: new Date()
       };
 
+      // Add rating for reviews
+      if (feedbackType === 'review') {
+        feedbackData.rating = rating;
+      }
+
       const result = await addFeedback(feedbackData);
       
       if (result.success) {
         // Reset form
         setFeedbackType('');
+        setRating(0);
         setMessage('');
         setEmail('');
         setSubmitSuccess(true);
@@ -158,6 +173,46 @@ const FeedbackPopup = ({ isOpen, onClose }) => {
                 </button>
               </div>
             </div>
+
+            {/* Rating Section (only shown when "Share Review" is selected) */}
+            {feedbackType === 'review' && (
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Rating
+                </label>
+                <div className="flex items-center">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => setRating(star)}
+                      onMouseEnter={() => setHoverRating(star)}
+                      onMouseLeave={() => setHoverRating(0)}
+                      className="focus:outline-none"
+                    >
+                      <Star
+                        className={`w-8 h-8 ${
+                          star <= (hoverRating || rating)
+                            ? 'text-yellow-400 fill-current'
+                            : 'text-gray-300 dark:text-gray-600'
+                        }`}
+                      />
+                    </button>
+                  ))}
+                </div>
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                  {rating > 0 && (
+                    <span>
+                      {rating === 1 && 'Poor'}
+                      {rating === 2 && 'Fair'}
+                      {rating === 3 && 'Good'}
+                      {rating === 4 && 'Very Good'}
+                      {rating === 5 && 'Excellent'}
+                    </span>
+                  )}
+                </p>
+              </div>
+            )}
 
             {/* Email (Optional) */}
             <div className="mb-6">

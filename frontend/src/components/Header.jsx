@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
-import { BookOpen, LogIn, LogOut, Settings, Sun, Moon, Menu, X, UserPlus } from 'lucide-react';
+import { BookOpen, LogIn, LogOut, Settings, Sun, Moon, Menu, X, UserPlus, MessageSquare } from 'lucide-react';
 
-const Header = () => {
+const Header = ({ onOpenFeedback }) => {
   const { currentUser, isAdmin, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
@@ -53,9 +53,13 @@ const Header = () => {
             <a href="#grades" className="text-gray-300 font-medium hover:text-white transition-colors">
               Grades
             </a>
-            <a href="#feedback" className="text-gray-300 font-medium hover:text-white transition-colors">
+            <button 
+              onClick={onOpenFeedback}
+              className="text-gray-300 font-medium hover:text-white transition-colors flex items-center gap-1"
+            >
+              <MessageSquare className="w-4 h-4" />
               Feedback
-            </a>
+            </button>
             
             <button 
               onClick={toggleTheme}
@@ -113,13 +117,16 @@ const Header = () => {
               >
                 Grades
               </a>
-              <a 
-                href="#feedback" 
-                className="text-gray-300 font-medium hover:text-white transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+              <button 
+                onClick={() => {
+                  onOpenFeedback();
+                  setMobileMenuOpen(false);
+                }}
+                className="text-gray-300 font-medium hover:text-white transition-colors flex items-center gap-1"
               >
+                <MessageSquare className="w-4 h-4" />
                 Feedback
-              </a>
+              </button>
               
               {currentUser ? (
                 <>

@@ -269,7 +269,12 @@ export const getFeedback = async () => {
     const querySnapshot = await getDocs(q);
     const feedback = [];
     querySnapshot.forEach((doc) => {
-      feedback.push({ id: doc.id, ...doc.data() });
+      const data = doc.data();
+      // Ensure rating is a number if it exists
+      if (data.rating !== undefined) {
+        data.rating = Number(data.rating);
+      }
+      feedback.push({ id: doc.id, ...data });
     });
     return { success: true, data: feedback };
   } catch (error) {

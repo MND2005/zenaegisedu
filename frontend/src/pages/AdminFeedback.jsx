@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getFeedback, updateFeedbackStatus, deleteFeedback } from '../services/firestore';
-import { AlertCircle, MessageSquare, CheckCircle, XCircle, Clock } from 'lucide-react';
+import { AlertCircle, MessageSquare, CheckCircle, XCircle, Clock, Star } from 'lucide-react';
 
 const AdminFeedback = () => {
   const [feedbackItems, setFeedbackItems] = useState([]);
@@ -120,6 +120,29 @@ const AdminFeedback = () => {
           color: 'text-gray-500 bg-gray-50 dark:bg-gray-700' 
         };
     }
+  };
+
+  // Render star rating
+  const renderStarRating = (rating) => {
+    if (!rating || rating < 1 || rating > 5) return null;
+    
+    return (
+      <div className="flex items-center gap-1 mt-2">
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            className={`w-4 h-4 ${
+              i < rating 
+                ? 'text-yellow-400 fill-current' 
+                : 'text-gray-300 dark:text-gray-600'
+            }`}
+          />
+        ))}
+        <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
+          {rating}/5
+        </span>
+      </div>
+    );
   };
 
   if (loading) {
@@ -244,6 +267,9 @@ const AdminFeedback = () => {
                       <p className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap">
                         {item.message}
                       </p>
+                      
+                      {/* Show star rating for reviews */}
+                      {item.type === 'review' && renderStarRating(item.rating)}
                     </div>
                   </div>
 
