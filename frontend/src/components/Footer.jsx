@@ -9,7 +9,7 @@ const Footer = ({ isAdmin = false }) => {
           {!isAdmin && (
             <>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 flex items-center justify-center gap-3">
-                Powered by <img src="/logo.png" alt="ZenAegis Logo" className="h-16" />
+                Powered by <img src="https://i.postimg.cc/HxfsFS6n/Logo-(1).png" alt="ZenAegis Logo" className="h-16" />
               </h2>
               <p className="text-lg text-gray-300 mb-8">
                 
