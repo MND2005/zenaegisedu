@@ -40,5 +40,6 @@
     }
   ],
   "installCommand": "cd frontend && yarn install --legacy-peer-deps",
+  "buildCommand": "cd frontend && yarn build",
   "outputDirectory": "frontend/build"
 }

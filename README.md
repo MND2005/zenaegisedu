@@ -49,6 +49,11 @@ To resolve these conflicts:
 - Downgraded `date-fns` to version 2.30.0
 - Always use `--legacy-peer-deps` flag when installing dependencies with npm
 
+## Yarn Setup
+
+This project uses Yarn as the package manager. The yarn.lock file ensures consistent dependency versions across environments. 
+A local yarn release is included in the .yarn/releases directory to ensure consistent builds.
+
 ## Deployment to Vercel
 
 1. Push your code to a GitHub repository
