@@ -14,7 +14,7 @@ An educational platform built with React, Firebase, and Tailwind CSS.
 2. Navigate to the `frontend` directory
 3. Install dependencies:
    ```bash
-   npm install
+   npm install --legacy-peer-deps
    # or
    yarn install
    ```
@@ -37,6 +37,17 @@ An educational platform built with React, Firebase, and Tailwind CSS.
    yarn start
    ```
 
+## Dependency Issue Resolution
+
+This project uses `date-fns` version 4.x, but some dependencies like `react-day-picker` require version 2.x or 3.x. To resolve this conflict:
+
+1. Always use `--legacy-peer-deps` flag when installing dependencies:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+2. For Vercel deployment, the build scripts already include this flag
+
 ## Deployment to Vercel
 
 1. Push your code to a GitHub repository
@@ -45,7 +56,7 @@ An educational platform built with React, Firebase, and Tailwind CSS.
 4. Configure the project:
    - Framework Preset: Create React App
    - Root Directory: Leave as root (configuration is in root vercel.json)
-   - Build Command: `npm run vercel-build` (or `yarn vercel-build`)
+   - Build Command: `npm run vercel-build`
    - Output Directory: `frontend/build`
 5. Add your environment variables in the Vercel dashboard
 6. Deploy!
