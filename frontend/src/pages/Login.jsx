@@ -13,6 +13,26 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  // Function to translate Firebase errors to user-friendly messages
+  const getFriendlyErrorMessage = (errorCode) => {
+    switch (errorCode) {
+      case 'auth/invalid-email':
+        return 'Please enter a valid email address.';
+      case 'auth/user-disabled':
+        return 'This account has been disabled. Please contact support.';
+      case 'auth/user-not-found':
+        return 'Please enter valid username and password.';
+      case 'auth/wrong-password':
+        return 'Please enter valid username and password.';
+      case 'auth/too-many-requests':
+        return 'Too many failed attempts. Please try again later.';
+      case 'auth/network-request-failed':
+        return 'Network error. Please check your connection and try again.';
+      default:
+        return 'Please enter valid username and password.';
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -26,10 +46,12 @@ const Login = () => {
       await login(email, password);
       navigate('/');
     } catch (err) {
-      setError('Failed to sign in: ' + err.message);
+      console.error('Login error:', err); // Log the actual error for debugging
+      const friendlyMessage = getFriendlyErrorMessage(err.code);
+      setError(friendlyMessage);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (

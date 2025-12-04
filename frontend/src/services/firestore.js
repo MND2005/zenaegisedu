@@ -7,6 +7,43 @@ const GRADE_CATEGORIES_COLLECTION = 'gradeCategories';
 const SUB_GRADES_COLLECTION = 'subGrades';
 const FEEDBACK_COLLECTION = 'feedback'; // New collection for feedback
 
+// Helper function to handle Firebase errors
+const handleFirebaseError = (error) => {
+  console.error('Firebase error:', error);
+  
+  // Check for common Firebase error codes
+  if (error.code) {
+    switch (error.code) {
+      case 'permission-denied':
+        return 'You do not have permission to perform this action. Please contact an administrator.';
+      case 'unavailable':
+        return 'The service is temporarily unavailable. Please try again later.';
+      case 'deadline-exceeded':
+        return 'Request timed out. Please check your connection and try again.';
+      case 'resource-exhausted':
+        return 'Service quota exceeded. Please try again later.';
+      case 'failed-precondition':
+        return 'Operation failed due to system state. Please try again.';
+      case 'aborted':
+        return 'Operation was aborted. Please try again.';
+      case 'out-of-range':
+        return 'Invalid request parameters. Please check your input.';
+      case 'unimplemented':
+        return 'This feature is not implemented. Please contact support.';
+      case 'internal':
+        return 'Internal server error. Please try again later.';
+      case 'unauthenticated':
+        return 'Authentication required. Please log in and try again.';
+      default:
+        // For security reasons, don't expose internal error details to users
+        return 'An unexpected error occurred. Please try again.';
+    }
+  }
+  
+  // Handle non-Firebase errors
+  return 'An unexpected error occurred. Please try again.';
+};
+
 // Add a new resource
 export const addResource = async (resourceData) => {
   try {
@@ -16,8 +53,7 @@ export const addResource = async (resourceData) => {
     });
     return { success: true, id: docRef.id };
   } catch (error) {
-    console.error('Error adding resource: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -32,8 +68,7 @@ export const getResources = async () => {
     });
     return { success: true, data: resources };
   } catch (error) {
-    console.error('Error getting resources: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -43,8 +78,7 @@ export const deleteResource = async (id) => {
     await deleteDoc(doc(db, RESOURCES_COLLECTION, id));
     return { success: true };
   } catch (error) {
-    console.error('Error deleting resource: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -54,8 +88,7 @@ export const updateResource = async (id, updateData) => {
     await updateDoc(doc(db, RESOURCES_COLLECTION, id), updateData);
     return { success: true };
   } catch (error) {
-    console.error('Error updating resource: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -69,12 +102,11 @@ export const getGradeCategories = async () => {
     });
     return { success: true, data: categories };
   } catch (error) {
-    console.error('Error getting grade categories: ', error);
     // Check if it's a permissions error
     if (error.code === 'permission-denied') {
       return { success: false, error: 'Missing or insufficient permissions. Please check Firestore security rules.' };
     }
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -84,12 +116,11 @@ export const updateGradeCategory = async (id, updateData) => {
     await updateDoc(doc(db, GRADE_CATEGORIES_COLLECTION, id), updateData);
     return { success: true };
   } catch (error) {
-    console.error('Error updating grade category: ', error);
     // Check if it's a permissions error
     if (error.code === 'permission-denied') {
       return { success: false, error: 'Missing or insufficient permissions. Please check Firestore security rules.' };
     }
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -104,12 +135,11 @@ export const initializeGradeCategories = async (categories) => {
     await batch.commit();
     return { success: true };
   } catch (error) {
-    console.error('Error initializing grade categories: ', error);
     // Check if it's a permissions error
     if (error.code === 'permission-denied') {
       return { success: false, error: 'Missing or insufficient permissions. Please check Firestore security rules.' };
     }
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -162,12 +192,11 @@ export const initializeGradeCategoriesIfNeeded = async () => {
     }
     return { success: true, initialized: false };
   } catch (error) {
-    console.error('Error checking/initializing grade categories: ', error);
     // Check if it's a permissions error
     if (error.code === 'permission-denied') {
       return { success: false, error: 'Missing or insufficient permissions. Please check Firestore security rules.' };
     }
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -183,8 +212,7 @@ export const getSubGrades = async () => {
     });
     return { success: true, data: subGrades };
   } catch (error) {
-    console.error('Error getting sub grades: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -194,8 +222,7 @@ export const addSubGrade = async (subGradeData) => {
     const docRef = await addDoc(collection(db, SUB_GRADES_COLLECTION), subGradeData);
     return { success: true, id: docRef.id };
   } catch (error) {
-    console.error('Error adding sub grade: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -205,8 +232,7 @@ export const updateSubGrade = async (id, updateData) => {
     await updateDoc(doc(db, SUB_GRADES_COLLECTION, id), updateData);
     return { success: true };
   } catch (error) {
-    console.error('Error updating sub grade: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -216,8 +242,7 @@ export const deleteSubGrade = async (id) => {
     await deleteDoc(doc(db, SUB_GRADES_COLLECTION, id));
     return { success: true };
   } catch (error) {
-    console.error('Error deleting sub grade: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -233,8 +258,7 @@ export const addFeedback = async (feedbackData) => {
     });
     return { success: true, id: docRef.id };
   } catch (error) {
-    console.error('Error adding feedback: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -249,8 +273,7 @@ export const getFeedback = async () => {
     });
     return { success: true, data: feedback };
   } catch (error) {
-    console.error('Error getting feedback: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -260,8 +283,7 @@ export const updateFeedbackStatus = async (id, status) => {
     await updateDoc(doc(db, FEEDBACK_COLLECTION, id), { status });
     return { success: true };
   } catch (error) {
-    console.error('Error updating feedback status: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };
 
@@ -271,7 +293,6 @@ export const deleteFeedback = async (id) => {
     await deleteDoc(doc(db, FEEDBACK_COLLECTION, id));
     return { success: true };
   } catch (error) {
-    console.error('Error deleting feedback: ', error);
-    return { success: false, error: error.message };
+    return { success: false, error: handleFirebaseError(error) };
   }
 };

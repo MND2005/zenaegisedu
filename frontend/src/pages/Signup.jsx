@@ -14,6 +14,26 @@ const Signup = () => {
   const { signup } = useAuth();
   const navigate = useNavigate();
 
+  // Function to translate Firebase errors to user-friendly messages
+  const getFriendlyErrorMessage = (errorCode) => {
+    switch (errorCode) {
+      case 'auth/email-already-in-use':
+        return 'An account with this email already exists. Please try logging in instead.';
+      case 'auth/invalid-email':
+        return 'Please enter a valid email address.';
+      case 'auth/operation-not-allowed':
+        return 'Account creation is currently disabled. Please contact support.';
+      case 'auth/weak-password':
+        return 'Password should be at least 6 characters.';
+      case 'auth/too-many-requests':
+        return 'Too many requests. Please try again later.';
+      case 'auth/network-request-failed':
+        return 'Network error. Please check your connection and try again.';
+      default:
+        return 'Failed to create an account. Please try again.';
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -31,10 +51,12 @@ const Signup = () => {
       await signup(email, password);
       navigate('/');
     } catch (err) {
-      setError('Failed to create an account: ' + err.message);
+      console.error('Signup error:', err); // Log the actual error for debugging
+      const friendlyMessage = getFriendlyErrorMessage(err.code);
+      setError(friendlyMessage);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
